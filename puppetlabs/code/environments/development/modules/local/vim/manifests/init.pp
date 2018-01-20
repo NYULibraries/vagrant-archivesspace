@@ -26,14 +26,16 @@ class vim(
   #alert ("The home: $home")
 
 
-  yumrepo { 'mcepl-vim8' :
-    name             => 'mcepl-vim8',
-    descr            => 'Copr repo for vim8 owned by mcepl',
-    baseurl          => 'https://copr-be.cloud.fedoraproject.org/results/mcepl/vim8/epel-7-$basearch/',
-    gpgcheck         => 1,
-    gpgkey           => 'https://copr-be.cloud.fedoraproject.org/results/mcepl/vim8/pubkey.gpg',
-    repo_gpgcheck    => 0,
-    enabled          => 1,
+  if ($facts['os']['family'] == 'RedHat') and ($facts['os']['release']['major'] == '7') {
+    yumrepo { 'mcepl-vim8' :
+      name             => 'mcepl-vim8',
+      descr            => 'Copr repo for vim8 owned by mcepl',
+      baseurl          => 'https://copr-be.cloud.fedoraproject.org/results/mcepl/vim8/epel-7-$basearch/',
+      gpgcheck         => 1,
+      gpgkey           => 'https://copr-be.cloud.fedoraproject.org/results/mcepl/vim8/pubkey.gpg',
+      repo_gpgcheck    => 0,
+      enabled          => 1,
+    }
   }
 
   ensure_packages([ $requirements ], {'ensure' => 'present',} )

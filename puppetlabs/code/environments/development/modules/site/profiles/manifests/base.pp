@@ -11,7 +11,7 @@ class profiles::base {
       include dltsyumrepo::test
     }
     elsif $facts[os][release][major] == '7' {
-      include dltsyumrepo::el7::test
+      #include dltsyumrepo::el7::test
     }
     #resources { 'firewall':
     #    purge => true,

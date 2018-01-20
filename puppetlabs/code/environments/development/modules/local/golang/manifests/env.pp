@@ -12,20 +12,19 @@ define golang::env {
 
   file_line { "${userhome} goroot":
     path => "${userhome}/.bashrc",
-    #line => 'export GOROOT=/usr/lib/golang',
-    line => 'export GOROOT=/opt/go',
+    line => 'export GOROOT=$(go env GOROOT)',
   }
   file_line { "${userhome} gopath":
     path => "${userhome}/.bashrc",
-    line => "export GOPATH=${userhome}/go",
+    line => "export GOPATH=$(go env GOPATH)",
   }
-  file_line { "${userhome} gobin":
-    path => "${userhome}/.bashrc",
-    line => "export GOBIN=${userhome}/go/bin",
-  }
+  #file_line { "${userhome} gobin":
+  #  path => "${userhome}/.bashrc",
+  #  line => "export GOBIN=${userhome}/go/bin",
+  #}
   file_line { "${userhome} userpath":
     path => "${userhome}/.bashrc",
-    line => 'export PATH=$GOPATH/bin:%GOROOT/bin:$PATH',
+    line => 'export PATH=$PATH:$(go env GOPATH)/bin',
   }
   $godirs = [
               "${userhome}/go", 

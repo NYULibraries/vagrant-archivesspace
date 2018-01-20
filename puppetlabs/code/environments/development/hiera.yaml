@@ -10,5 +10,6 @@ hierarchy:
     paths:  # Can specifiy an array of paths insted of just one.
       - "os/%{facts.os.family}.yaml"
       - "accounts.yaml"
+      - "archivesspace.yaml"
       - "common.yaml"
 

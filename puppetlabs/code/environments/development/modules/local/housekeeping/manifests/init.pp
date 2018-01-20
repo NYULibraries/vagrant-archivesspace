@@ -7,7 +7,7 @@ class housekeeping (
   #include housekeeping::python
   #include housekeeping::aws
   include housekeeping::ruby
-  include housekeeping::r10k
+  #include housekeeping::r10k
 
   housekeeping::user{ 'root': }
   #housekeeping::user{ 'centos': }
