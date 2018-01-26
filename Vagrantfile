@@ -2,8 +2,9 @@
 # vi: set ft=ruby :
 #
 
-HOST_NAME = "archivesspace"
-MANIFEST = "#{HOST_NAME}"
+HOST_NAME = "archivesspace-test"
+#MANIFEST = "#{HOST_NAME}"
+MANIFEST = "archivesspace"
 CPUS = "1"
 MEMORY = "1024"
 ENVIRONMENT = "development"
@@ -31,10 +32,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.private_key_path = [ '~/.vagrant.d/insecure_private_key', '~/.ssh/id_rsa' ]
   config.vm.box = "NYULibraries/centos_7_3_1611"
 
-  config.vm.network "private_network", ip: "192.168.50.39",
+  config.vm.network "private_network", type: "dhcp",
     virtualbox__hostonly: true
-  config.vm.network "forwarded_port", guest:  8080, host: 9080,
+  config.vm.network "forwarded_port", guest:  80, host: 80,
       virtualbox__hostonly: true
+  config.vm.network "forwarded_port", guest:  8080, host: 8080,
+      virtualbox__hostonly: true
+  config.vm.network "forwarded_port", guest:  8081, host: 8081,
+      virtualbox__hostonly: true
+  config.vm.network "forwarded_port", guest:  8082, host: 8082,
+      virtualbox__hostonly: true
+  config.vm.network "forwarded_port", guest:  8089, host: 8089,
+      virtualbox__hostonly: true
+  config.vm.network "forwarded_port", guest:  8090, host: 8090,
+      virtualbox__hostonly: true
+  config.vm.network "forwarded_port", guest:  8091, host: 8091,
+      virtualbox__hostonly: true
+
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false

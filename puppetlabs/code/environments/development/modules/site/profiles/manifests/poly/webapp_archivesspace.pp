@@ -10,7 +10,21 @@
 #
 # Copyright 2016 Your name here, unless otherwise noted.
 #
-class profiles::webapp_archivesspace (
+class profiles::poly::webapp_archivesspace (
+  #$install_dir = lookup('archivesspace::install_dir', String, 'first' ),
+  #$db_host     = lookup('archivesspace::db_host', String, 'first' ),
+  #$db_name     = lookup('archivesspace::db_name', String, 'first' ),
+  #$db_passwd   = lookup('archivesspace::db_passwd', String, 'first' ),
+  #$db_user     = lookup('archivesspace::db_user', String, 'first' ),
+  #$ensure             = lookup('archivesspace::ensure', String, 'first'),
+  #$plugin_install_dir = lookup('archivesspace::plugin_install_dir', String, 'first'),
+  #
+  #$plugin_ead_export_revision = lookup('archivesspace::plugin_ead_export_revision'), 
+  #$plugin_marcxml_export_revision = lookup('archivesspace::plugin_marcxml_export_revision'),
+  #$plugin_sso_revision = lookup('archivesspace::plugin_sso_revision'),
+  #$user                = lookup('archivesspace::user', String, 'first' ),
+  #$group               = lookup('archivesspace::group', String, 'first' ),
+  ##$region             = chop($ec2_placement_availability_zone),
   $ensure = lookup('archivesspace::ensure', String, 'first'),
   $version        = lookup('profiles::poly::version', String, 'first'),
   $install_dir    = lookup('profiles::poly::install_dir', String, 'first'),

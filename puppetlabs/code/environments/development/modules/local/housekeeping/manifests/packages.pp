@@ -8,7 +8,6 @@ class housekeeping::packages (
     'bind-utils',
     'deltarpm',
     'epel-release',
-    'gdbm-devel',
     'gcc',
     'gcc-c++',
     'git',
@@ -31,4 +30,9 @@ class housekeeping::packages (
     'zlib-devel',
   ], {'ensure' => 'present'} )
 
+    if ($facts['os']['family'] == 'RedHat') and ($facts['os']['release']['majo    r'] == '7') {
+    ensure_packages([
+      'gdbm-devel',
+    ])
+  }
 }

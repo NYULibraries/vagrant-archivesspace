@@ -38,7 +38,28 @@
 class profiles::rpmfactory {
 
   include rpmbuilder
-  include gbp_rpm
+  #include gbp_rpm
+  include vim
+  vim::setup{ "vagrant" :}
+  vim::plugin{ 'flazz/vim-colorschemes' : }
+    #  user  => 'vagrant',
+    #group => 'vagrant',
+    #}
+
+  vim::plugin{ 'gmarik/Vundle.vim': }
+  vim::plugin{ 'tpope/vim-fugitive': }
+  vim::plugin{ 'Yggdroot/indentLine': }
+  vim::plugin{ 'davidhalter/jedi-vim': }
+  vim::plugin{ 'fatih/vim-go': }
+  vim::plugin{ 'hashivim/vim-packer': }
+  vim::plugin{ 'rodjek/vim-puppet': }
+  vim::plugin{ 'hashivim/vim-terraform': }
+  vim::plugin{ 'hashivim/vim-vagrant': }
+  vim::plugin{ 'Valloric/YouCompleteMe': }
+  vim::plugin{ 'L9': }
+
+  include golang
+
   #include pyenv
   #pyenv::install { ['vagrant','root']: }
   #pyenv::compile { 'compile 2.7.11 root' :
