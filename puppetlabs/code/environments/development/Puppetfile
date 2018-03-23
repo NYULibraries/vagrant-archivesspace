@@ -17,7 +17,7 @@ mod 'puppetlabs/apache',
 
 mod 'flannon/archivesspace',
     :git => 'git://github.com/flannon/puppet-archivesspace.git',
-    :ref => 'd0.1.7'
+    :ref => 'v2.0.0'
 
 mod 'flannon/archivesspace_devenv',
     :git => 'git://github.com/flannon/puppet-archivesspace_devenv.git',
