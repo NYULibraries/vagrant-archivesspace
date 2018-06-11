@@ -72,6 +72,11 @@ Port 8080 on the guest is mapped to port 9080 on the host, just because 8080 alw
 
 #### Storage
 
+If you need more storage you can build the mysql data in its own volume by changing the MULTIVOL parameter at the top of the Vagrantfile to,
+
+    MULTIVOL = true
+
+This will mount a second volume on the vm in /var/lib/mysql.  The volume image will be written to vagrant-archivesspace/untracked-files/archivesspace-vol2.vdi.
 The vagrantfile will mount a second volume on /var/lib/mysql in the guest, and the .vdi file that maps to the volume will be in ./unstracked-files in the directory with the Vagrantfile on the host.  The default value for the second volume is 10GB.  IF you would like to change the volume size you'll need to edit the Vagrantfile before running `vagrant up`, and change the following line,
 
     config.persistent_storage.size = 10240
