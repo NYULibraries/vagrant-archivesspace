@@ -6,10 +6,10 @@ Vagrant.require_version ">= 2.0.1"
 
 HOST_NAME = "archivesspace"
 MANIFEST = "#{HOST_NAME}"
-CPUS = "4"
-MEMORY = "4096"
+CPUS = "2"
+MEMORY = "2048"
 MULTIVOL = false
-MOUNTPOINT = "/mnt"
+MOUNTPOINT = "/var/lib/mysql"
 ENVIRONMENT = "development"
 PUPPET = "4.10.8"
 VAGRANTDIR = File.expand_path(File.dirname(__FILE__))
@@ -27,15 +27,6 @@ end
 unless FileTest.symlink?("#{VAGRANTDIR}/hieradata")
   File.symlink "#{DATADIR}", "#{VAGRANTDIR}/hieradata"
 end
-
-#unless FileTest.directory?("puppetlabs/code")
-#  system('git submodule update --init --recursive')
-#  Dir.chdir('puppetlabs'){
-#    system('pwd')
-#    #system('/usr/local/bin/r10k deploy environment development -p -v -c r10k/r10k-public.yaml')
-#    system('r10k deploy environment development -p -v -c r10k/r10k-public.yaml')
-#  }
-#end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Disable insecure key replacement
@@ -122,5 +113,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                        #"--hiera_config /vagrant/puppetlabs/puppet/hiera.yaml"
                        ] 
   end
+  config.vm.provision "shell", inline: "systemctl start archivesspace"
 
 end
